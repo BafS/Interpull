@@ -8,10 +8,12 @@ html(lang='en' ng-app='pull')
       link(rel='stylesheet', href='/css/style.css')
       link(rel='stylesheet', href='/components/bootstrap/dist/css/bootstrap.min.css')
     block js
-      script(src='components/angular/angular.js')
-      script(src='components/Chart.js/Chart.min.js')
-      script(src='components/angular-chart.js/dist/angular-chart.js')
-      script(src='js/ng-pull.js')
+      script(src='/components/angular/angular.js')
+      script(src='/components/Chart.js/Chart.min.js')
+      script(src='/components/angular-chart.js/dist/angular-chart.js')
+      script(src='/socket.io/socket.io.js')
+      script(src='/components/angular-socket-io/socket.min.js')
+      script(src='/js/ng-pull.js')
       if ENV_DEVELOPMENT
         script(src='http://localhost:35729/livereload.js')
   body

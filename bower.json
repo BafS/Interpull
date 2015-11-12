@@ -21,6 +21,7 @@
   "dependencies": {
     "angular-chart.js": "~0.8.5",
     "bootstrap": "~3.3.5",
-    "Chart.js": "chartjs#~1.0.2"
+    "Chart.js": "chartjs#~1.0.2",
+    "angular-socket-io": "~0.7.0"
   }
 }
