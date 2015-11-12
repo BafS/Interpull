@@ -1,9 +1,26 @@
 {
-  "name": "expresschart",
+  "name": "Interpull",
   "version": "0.0.1",
   "ignore": [
     "**/.*",
     "node_modules",
-    "components"
-  ]
+    "components",
+    "bower_components",
+    "public/components",
+    "test",
+    "tests"
+  ],
+  "homepage": "https://github.com/BafS/Interpull",
+  "authors": [
+    "BafS <fabacrans@hotmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "dependencies": {
+    "angular-chart.js": "~0.8.5",
+    "bootstrap": "~3.3.5",
+    "Chart.js": "chartjs#~1.0.2"
+  }
 }
