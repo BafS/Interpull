@@ -5,6 +5,7 @@ body {
 a {
   color: #00B7FF; }
 
-#myChart {
-  max-width: 300px;
-  max-height: 300px; }
+#chartWrapper {
+  background: #eee;
+  max-width: 600px;
+  max-height: 500px; }

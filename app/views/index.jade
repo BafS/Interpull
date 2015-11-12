@@ -2,18 +2,14 @@ extends layout
 
 block content
   h1= title
-  //- p Welcome to #{title}
 
-  canvas(id="myChart" width="400" height="400")
-  
-  input(type="text" ng-model="yourName" placeholder="Enter a name here")
-  
-  Hello {{yourName}}!
-
-  div(ng-controller='PullController as pull')
+  div(ng-controller="DoughnutCtrl")
+    div(id="chartWrapper")
+      canvas(id="chart" class="chart chart-doughnut" chart-data="data" chart-labels="labels")
+    
     .btn-group(role='group')
-      button.btn.btn-default(type='button' ng-click='pull.vote(0)') Option 1
-      button.btn.btn-default(type='button' ng-click='pull.vote(1)') Option 2
-      button.btn.btn-default(type='button' ng-click='pull.vote(2)') Option 3
-
-  script(src='js/app.js')
+      button.btn.btn-default(type='button' ng-click='vote(0)') {{labels[0]}}
+      button.btn.btn-default(type='button' ng-click='vote(1)') {{labels[1]}}
+      button.btn.btn-default(type='button' ng-click='vote(2)') {{labels[2]}}
+      
+    button.btn.btn-default(type='button' ng-click='reset()') Reset

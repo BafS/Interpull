@@ -11,9 +11,14 @@ var io = require('socket.io')(server);
 require('./config/express')(app, config);
 
 io.on('connection', function (socket) {
-  socket.emit('message', { hello: 'world' });
-  socket.on('message', function (data) {
-    console.log(data);
+  // On new message from a client
+  socket.on('clientVote', function (data) {
+    // We broadcast data
+    socket.broadcast.emit('bcVote', data);
+  });
+
+  socket.on('reset', function () {
+    socket.broadcast.emit('reset');
   });
 });
 

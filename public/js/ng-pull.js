@@ -1,54 +1,33 @@
+'use strict';
 
-var data = [
-    {
-        value: 0,
-        color:"#F7464A",
-        highlight: "#FF5A5E",
-        label: "Red"
-    },
-    {
-        value: 0,
-        color: "#46BFBD",
-        highlight: "#5AD3D1",
-        label: "Green"
-    },
-    {
-        value: 0,
-        color: "#FDB45C",
-        highlight: "#FFC870",
-        label: "Yellow"
-    }
-];
+var app = angular.module('app', ['chart.js', 'btford.socket-io'])
 
-angular.module('pull', [])
-  .controller('PullController', function() {
-    var pull = this;
+.factory('mySocket', function (socketFactory) {
+  return socketFactory();
+})
 
-    pull.dataa = [
-        {
-            value: 0,
-            color:"#F7464A",
-            highlight: "#FF5A5E",
-            label: "Red"
-        },
-        {
-            value: 0,
-            color: "#46BFBD",
-            highlight: "#5AD3D1",
-            label: "Green"
-        },
-        {
-            value: 0,
-            color: "#FDB45C",
-            highlight: "#FFC870",
-            label: "Yellow"
-        }
-    ]
+.controller('DoughnutCtrl', function ($scope, mySocket) {
+  $scope.labels = ['Option 1', 'Option 2', 'Option 3'];
+  $scope.data = [2, 1, 4];
 
-    pull.vote = function(num) {
-      console.log("VOTE " + num);
-      data[num].value++;
-      // pull.todos.push({text:pull.todoText, done:false});
-      // pull.todoText = '';
-    };
+  mySocket.connect();
+
+  mySocket.on('bcVote', function (data) {
+    var n = data.key;
+    $scope.data[n] = data.votes; // We don't increment, to be sure to be sync
+  });
+
+  mySocket.on('reset', function (data) {
+    $scope.data = [0, 0, 0];
+  });
+
+  $scope.vote = function (n) {
+    $scope.data[n]++;
+    mySocket.emit('clientVote', {key: n, votes: $scope.data[n]});
+  }
+
+  $scope.reset = function () {
+    $scope.data = [0, 0, 0];
+    mySocket.emit('reset');
+  }
 });
