@@ -1,19 +1,23 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+.container {
+  width: auto;
+  max-width: 760px;
+  padding: 0 15px;
 }
 
-#chart {
-  // max-width: 300px;
-  // max-height: 300px;
+.container .text-muted {
+  margin: 20px 0;
 }
 
-#chartWrapper {
-  background: #eee;
-  max-width: 600px;
-  max-height: 500px;
+.btn-vote {
+  text-align: center;
+  padding: 15px;
+  margin: 20px 0;
+}
+
+.btn-vote .btn-group {
+  margin: 0 4px;
 }

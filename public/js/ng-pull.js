@@ -8,7 +8,7 @@ var app = angular.module('app', ['chart.js', 'btford.socket-io'])
 
 .controller('DoughnutCtrl', function ($scope, mySocket) {
   $scope.labels = ['Option 1', 'Option 2', 'Option 3'];
-  $scope.data = [2, 1, 4];
+  $scope.data = [0, 0, 0];
 
   mySocket.connect();
 
@@ -23,6 +23,7 @@ var app = angular.module('app', ['chart.js', 'btford.socket-io'])
 
   $scope.vote = function (n) {
     $scope.data[n]++;
+    $scope.message = '';
     mySocket.emit('clientVote', {key: n, votes: $scope.data[n]});
   }
 
