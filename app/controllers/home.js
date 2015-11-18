@@ -1,6 +1,5 @@
 var express = require('express'),
-  router = express.Router(),
-  Article = require('../models/article');
+  router = express.Router();
 
 
 module.exports = function (app) {
@@ -9,9 +8,7 @@ module.exports = function (app) {
 
 
 router.get('/', function (req, res, next) {
-  // var articles = [new Article(), new Article()];
-    res.render('index', {
-      title: 'Interpull'
-      // articles: articles
-    });
+  res.render('index', {
+    title: 'Interpull'
+  });
 });

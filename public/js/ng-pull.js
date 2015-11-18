@@ -8,13 +8,16 @@ var app = angular.module('app', ['chart.js', 'btford.socket-io'])
 
 .controller('DoughnutCtrl', function ($scope, mySocket) {
   $scope.labels = ['Option 1', 'Option 2', 'Option 3'];
-  $scope.data = [0, 0, 0];
 
   mySocket.connect();
 
   mySocket.on('bcVote', function (data) {
     var n = data.key;
     $scope.data[n] = data.votes; // We don't increment, to be sure to be sync
+  });
+
+  mySocket.on('init', function (data) {
+    $scope.data = data;
   });
 
   mySocket.on('reset', function (data) {
